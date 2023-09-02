@@ -8,6 +8,7 @@ class FormController extends Controller
 {
     public function createForm(FormBuilder $formBuilder)
     {
+
         $form = $formBuilder->create(\App\Forms\SongForm::class, [
             'method' => 'POST',
             'url' => 'google.com'
