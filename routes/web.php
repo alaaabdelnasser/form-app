@@ -18,7 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form', [FormController::class,'createForm']);
-Route::post('/form', 'FormController@storeForm');
+Route::view('/form', 'formBuilder');
+
+Route::get('/form/{form}', [FormController::class,'getfrom'])->name('show-form');
+Route::get('/form-list', [FormController::class,'formlist']);
+Route::get('/answer-list/{form}', [FormController::class,'answerlist'])->name('show-answers');
+Route::post('/form-store', [FormController::class,'store'])->name('data-store');
+Route::post('/answers-store/{form}', [FormController::class,'storeAnswer'])->name('answers-store');
+
+
 //Route::get('/form',[FormController::class,'createForm']);
 //Route::get('/form',[FormController::class,'storeForm']);

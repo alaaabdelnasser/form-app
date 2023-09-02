@@ -11,22 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('form_questions', function (Blueprint $table) {
+        Schema::create('forms', function (Blueprint $table) {
             $table->id();
-            $table->string('question');
+            $table->text('json');
             $table->timestamps();
         });
 
-        Schema::create('form_answers', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('question_id');
-            $table->string('answer');
+            $table->unsignedBigInteger('form_id');
+            $table->text('answers');
             $table->timestamps();
 
-            $table->foreign('question_id')
-                ->references('id')->on('form_questions')
-                ->onDelete('cascade');
         });
+
     }
 
     /**
